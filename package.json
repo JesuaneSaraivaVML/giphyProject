@@ -1,0 +1,26 @@
+{
+  "name": "giphyproject",
+  "version": "1.0.0",
+  "description": "Mini project challenge",
+  "main": "index.js",
+  "scripts": {
+    "sass:watch": "sass --watch scss:css",
+    "sass:compressed": "sass scss:css --style compressed",
+    "sass:build": "npm run sass:compressed",
+    "start": "npm run sass:watch",
+    "build": "npm run sass:build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JesuaneSaraivaVML/giphyProject.git"
+  },
+  "author": "Jesuane Saraiva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JesuaneSaraivaVML/giphyProject/issues"
+  },
+  "homepage": "https://github.com/JesuaneSaraivaVML/giphyProject#readme",
+  "devDependencies": {
+    "sass": "^1.80.3"
+  }
+}

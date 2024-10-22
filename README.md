@@ -1,3 +1,3 @@
 # giphyProject
 
-An informal mini project challenge.
+Giphy mini project challenge.
