@@ -1,0 +1,15 @@
+@use "../abstracts/variables" as v;
+
+body {
+  font-family: Work Sans, sans-serif;
+  color: v.$color-text-primary;
+}
+
+.heading-primary {
+  color: v.$color-accent-primary;
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 3.988rem;
+  letter-spacing: -0.02em;
+}

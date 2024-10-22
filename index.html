@@ -4,6 +4,53 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Giphy Project</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <header class="header u-center-text">
+        <h1 class="heading-primary">Giphy Project</h1>
+      </header>
+      <nav class="mobile-nav">
+        <a
+          href="#section-random"
+          class="mobile-nav__item mobile-nav__item--active"
+          aria-label="Random"
+          aria-current="page"
+          role="button"
+        >
+          <i class="mobile-nav__icon fa-regular fa-image"></i>
+        </a>
+        <a
+          href="#section-finder"
+          class="mobile-nav__item"
+          aria-label="Finder"
+          role="button"
+        >
+          <i class="mobile-nav__icon fas fa-search"></i>
+        </a>
+        <a
+          href="#section-trending"
+          class="mobile-nav__item"
+          aria-label="Trending"
+          role="button"
+        >
+          <i class="mobile-nav__icon fa-regular fa-thumbs-up"></i>
+        </a>
+      </nav>
+      <section id="section-random" class="section-random">
+        random section
+      </section>
+      <section id="section-finder" class="section-finder">
+        finder section
+      </section>
+      <section id="section-trending" class="section-trending">
+        trending section
+      </section>
+    </div>
+  </body>
 </html>

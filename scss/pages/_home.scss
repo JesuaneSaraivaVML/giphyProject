@@ -1,0 +1,11 @@
+@use "../abstracts/variables" as v;
+
+.section-random {
+  background-color: v.$color-bg-secondary;
+}
+.section-finder {
+  background-color: red;
+}
+.section-trending {
+  background-color: blue;
+}

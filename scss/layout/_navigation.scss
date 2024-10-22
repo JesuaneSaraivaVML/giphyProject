@@ -1,0 +1,28 @@
+@use "../abstracts/variables" as v;
+
+.mobile-nav {
+  background-color: v.$color-bg-secondary;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+
+  &__item {
+    text-decoration: none;
+    color: v.$color-text-secondary;
+    transition: color 0.3s ease;
+
+    &--active {
+      color: v.$color-accent-primary;
+    }
+
+    &:hover {
+      color: v.$color-accent-primary;
+    }
+  }
+
+  &__icon {
+    font-size: v.$default-font-size;
+  }
+}
