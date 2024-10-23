@@ -6,7 +6,7 @@
   height: calc(100vh - (#{v.$header-height} + #{v.$nav-height}));
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: v.$default-gap;
 
   &__picture {
     display: block;
@@ -23,8 +23,37 @@
 .section-finder {
   background-color: v.$color-bg-secondary;
   padding: v.$section-padding-sm;
-  height: v.$section-height;
+  min-height: v.$section-height;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: v.$default-gap;
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: v.$default-gap;
+  }
+
+  &__input-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__input {
+    padding: v.$search-input-padding;
+  }
+  &__input-label {
+    font-size: v.$font-size-sm;
+    line-height: 1.6rem;
+    text-align: left;
+  }
+}
+
+.section-trending {
+  background-color: v.$color-bg-secondary;
+  padding: v.$section-padding-sm;
+  min-height: v.$section-height;
+  display: flex;
+  flex-direction: column;
+  gap: v.$default-gap;
 }

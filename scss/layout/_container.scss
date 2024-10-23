@@ -3,5 +3,5 @@
 .container {
   display: grid;
   grid-template-columns: 1fr; // Single column for mobile
-  grid-template-rows: repeat(auto, 5);
+  grid-template-rows: repeat(5, auto);
 }

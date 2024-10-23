@@ -13,15 +13,18 @@ $color-btn-hover: #9933ffb7;
 $default-font-size: 1.5rem;
 $default-icon-size: 1.8rem;
 $heading-font-size-primary: 2.6rem;
-$heading-font-size-secondary: 2.4rem;
+$heading-font-size-secondary: 2.5rem;
+$font-size-sm: 1.25rem;
 
-// PADDING
+// PADDINGS
 $section-padding-sm: 1rem 2.5rem;
-
-// BUTTONS
 $button-padding: 1rem;
+$search-input-padding: 0.8rem;
 
 // DIV HEIGHTS
 $header-height: 5.9875rem;
 $nav-height: 4.3rem;
 $section-height: calc(100vh - (#{$header-height} + #{$nav-height}));
+
+// GAPS & MARGINS
+$default-gap: 1rem;

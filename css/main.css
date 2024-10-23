@@ -35,7 +35,7 @@ body {
 .heading-secondary {
   color: #ff5b5b;
   text-transform: capitalize;
-  font-size: 2.4rem;
+  font-size: 2.5rem;
 }
 
 .u-center-text {
@@ -53,7 +53,7 @@ body {
 .container {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(auto, 5);
+  grid-template-rows: repeat(5, auto);
 }
 
 .mobile-nav {
@@ -92,10 +92,27 @@ body {
   text-transform: uppercase;
   padding: 1rem;
   cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
   transition: all 0.2s;
 }
 .btn:hover {
   background-color: rgba(153, 51, 255, 0.7176470588);
+}
+
+.img-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, auto);
+  gap: 1rem;
+}
+.img-container__img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
 .section-random {
@@ -119,7 +136,33 @@ body {
 .section-finder {
   background-color: #1e1e1e;
   padding: 1rem 2.5rem;
-  height: calc(100vh - (5.9875rem + 4.3rem));
+  min-height: calc(100vh - (5.9875rem + 4.3rem));
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.section-finder__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.section-finder__input-container {
+  display: flex;
+  flex-direction: column;
+}
+.section-finder__input {
+  padding: 0.8rem;
+}
+.section-finder__input-label {
+  font-size: 1.25rem;
+  line-height: 1.6rem;
+  text-align: left;
+}
+
+.section-trending {
+  background-color: #1e1e1e;
+  padding: 1rem 2.5rem;
+  min-height: calc(100vh - (5.9875rem + 4.3rem));
   display: flex;
   flex-direction: column;
   gap: 1rem;
