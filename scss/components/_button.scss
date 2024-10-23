@@ -1,0 +1,23 @@
+@use "../abstracts/variables" as v;
+
+.btn {
+  background-color: v.$color-accent-tertiary;
+  color: #fff;
+  border: none;
+  border-radius: 0;
+  font-family: inherit;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  padding: v.$button-padding;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &__icon {
+  }
+  &__text {
+  }
+
+  &:hover {
+    background-color: v.$color-btn-hover;
+  }
+}

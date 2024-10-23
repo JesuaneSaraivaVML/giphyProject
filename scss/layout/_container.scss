@@ -1,8 +1,7 @@
+@use "../abstracts/variables" as v;
+
 .container {
   display: grid;
   grid-template-columns: 1fr; // Single column for mobile
-  grid-template-rows: repeat(
-    auto,
-    5
-  ); // Auto height for header and nav, rest takes remaining space
+  grid-template-rows: repeat(auto, 5);
 }

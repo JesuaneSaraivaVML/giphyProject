@@ -1,11 +1,27 @@
 // COLORS
 $color-bg-primary: #121212;
 $color-bg-secondary: #1e1e1e;
+$color-bg-tertiary: #292d26;
 $color-text-primary: #ffffff;
 $color-text-secondary: #b3b3b3;
-$color-accent-primary: #ff69b4;
-$color-accent-secondary: #00ff00;
-$color-accent-tertiary: #9933ff;
+$color-accent-primary: #04ff8e; // Giphy's bright green
+$color-accent-secondary: #ff5b5b; // Giphy's pink/red
+$color-accent-tertiary: #9933ff; // Giphy's purple
+$color-btn-hover: #9933ffb7;
 
 // FONT
-$default-font-size: 1.6rem;
+$default-font-size: 1.5rem;
+$default-icon-size: 1.8rem;
+$heading-font-size-primary: 2.6rem;
+$heading-font-size-secondary: 2.4rem;
+
+// PADDING
+$section-padding-sm: 1rem 2.5rem;
+
+// BUTTONS
+$button-padding: 1rem;
+
+// DIV HEIGHTS
+$header-height: 5.9875rem;
+$nav-height: 4.3rem;
+$section-height: calc(100vh - (#{$header-height} + #{$nav-height}));

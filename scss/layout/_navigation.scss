@@ -1,12 +1,15 @@
 @use "../abstracts/variables" as v;
+@use "../abstracts/mixins" as m;
 
 .mobile-nav {
-  background-color: v.$color-bg-secondary;
+  background-color: v.$color-bg-tertiary;
+  height: v.$nav-height;
+  @include m.sticky-element(v.$header-height);
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  padding: 1rem;
+  padding: 1.2rem;
 
   &__item {
     text-decoration: none;
@@ -18,11 +21,11 @@
     }
 
     &:hover {
-      color: v.$color-accent-primary;
+      color: v.$color-accent-secondary;
     }
   }
 
   &__icon {
-    font-size: v.$default-font-size;
+    font-size: v.$default-icon-size;
   }
 }

@@ -43,7 +43,20 @@
         </a>
       </nav>
       <section id="section-random" class="section-random">
-        random section
+        <h2 class="heading-secondary">Random</h2>
+        <picture class="section-random__picture">
+          <source srcset="assets/300px.jpg" media="(min-width: 600px)" />
+          <source srcset="assets/300px.jpg" media="(max-width: 599px)" />
+          <img
+            class="section-random__image"
+            src="assets/400px.jpg"
+            alt="Random GIF"
+          />
+        </picture>
+        <button class="btn">
+          <i class="btn__icon fa-solid fa-arrows-rotate"></i>
+          <span class="btn__text">Next</span>
+        </button>
       </section>
       <section id="section-finder" class="section-finder">
         finder section

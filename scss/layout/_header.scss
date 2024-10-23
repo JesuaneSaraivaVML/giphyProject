@@ -1,5 +1,9 @@
 @use "../abstracts/variables" as v;
+@use "../abstracts/mixins" as m;
 
 .header {
   background-color: v.$color-bg-primary;
+  padding: 1rem;
+  height: v.$header-height;
+  @include m.sticky-element(0);
 }

@@ -1,15 +1,25 @@
 @use "../abstracts/variables" as v;
 
+%heading-style {
+  font-weight: 700;
+  line-height: 3.988rem;
+  letter-spacing: -0.02em;
+}
+
 body {
   font-family: Work Sans, sans-serif;
   color: v.$color-text-primary;
 }
 
 .heading-primary {
+  @extend %heading-style;
   color: v.$color-accent-primary;
   text-transform: uppercase;
-  font-size: 2.5rem;
-  font-weight: 700;
-  line-height: 3.988rem;
-  letter-spacing: -0.02em;
+  font-size: v.$heading-font-size-primary;
+}
+.heading-secondary {
+  @extend %heading-style;
+  color: v.$color-accent-secondary;
+  text-transform: capitalize;
+  font-size: v.$heading-font-size-secondary;
 }
