@@ -11,6 +11,9 @@
     cursor: pointer;
     &:disabled {
       cursor: not-allowed;
+      .pagination__icon {
+        color: v.$color-btn-disabled;
+      }
     }
   }
   &__icon {

@@ -3,14 +3,10 @@
 .section-random {
   background-color: v.$color-bg-secondary;
   padding: v.$section-padding-sm;
-  height: calc(100vh - (#{v.$header-height} + #{v.$nav-height}));
+  min-height: calc(100vh - (#{v.$header-height} + #{v.$nav-height}));
   display: flex;
   flex-direction: column;
   gap: v.$default-gap;
-
-  &__picture {
-    display: block;
-  }
 
   &__image {
     width: 100%;
