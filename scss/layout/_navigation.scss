@@ -11,6 +11,9 @@
   align-items: center;
   padding: 1.2rem;
 
+  @include m.respond(lg-phone) {
+    display: none;
+  }
   &__item {
     text-decoration: none;
     color: v.$color-text-secondary;

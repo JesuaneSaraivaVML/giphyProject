@@ -6,4 +6,8 @@
   padding: 1rem;
   height: v.$header-height;
   @include m.sticky-element(0);
+  @include m.respond(lg-phone) {
+    grid-column: start / end;
+    grid-row: header-start / content-start;
+  }
 }

@@ -1,4 +1,5 @@
 @use "../abstracts/variables" as v;
+@use "../abstracts/mixins" as m;
 
 .section-random {
   background-color: v.$color-bg-secondary;
@@ -7,7 +8,10 @@
   display: flex;
   flex-direction: column;
   gap: v.$default-gap;
-
+  @include m.respond(lg-phone) {
+    grid-column: start / middle;
+    grid-row: content-start / content-middle;
+  }
   &__image {
     width: 100%;
     height: 100%;
@@ -23,6 +27,11 @@
   display: flex;
   flex-direction: column;
   gap: v.$default-gap;
+
+  @include m.respond(lg-phone) {
+    grid-column: middle / end;
+    grid-row: content-start / content-end;
+  }
 
   &__form {
     display: flex;
@@ -43,17 +52,6 @@
     line-height: 1.6rem;
     text-align: left;
   }
-
-  &__pagination {
-  }
-  &__pagination-button {
-    &--right {
-    }
-    &--left {
-    }
-  }
-  &__pagination-number {
-  }
 }
 
 .section-trending {
@@ -63,4 +61,8 @@
   display: flex;
   flex-direction: column;
   gap: v.$default-gap;
+  @include m.respond(lg-phone) {
+    grid-column: start / middle;
+    grid-row: content-middle / content-end;
+  }
 }

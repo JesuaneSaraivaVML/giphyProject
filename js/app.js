@@ -59,7 +59,6 @@ async function handleLoadRandomGIF() {
     const { data: randomResult } = await fetchFromAPI(
       `${URL_RANDOM}&rating=${RATING}`
     );
-    console.log(randomResult);
     // Get the media's URL from the Giphy API response for the original and mobile sizes
     const mediaUrlOriginal = randomResult.images.original.url;
     const mediaUrlSmall = randomResult.images.downsized.url;
@@ -77,7 +76,7 @@ async function handleLoadRandomGIF() {
   } catch (e) {
     // TODO improve this
     pictureElementRandom.innerHTML = `
-    Error fetching random GIF
+    Error fetching random GIF: ${e}
   `;
   }
 }
@@ -183,8 +182,7 @@ async function handleSearch(e, offset = 0) {
     // Update pagination controls
     updatePaginationControls(pagination, "finder");
   } catch (e) {
-    // TODO
-    console.log(e);
+    finderImageContainer.innerHTML = `Error fetching GIFs from API: ${e}`;
   }
 }
 

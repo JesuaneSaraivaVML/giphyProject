@@ -1,7 +1,13 @@
 @use "../abstracts/variables" as v;
+@use "../abstracts/mixins" as m;
 
 .container {
   display: grid;
   grid-template-columns: 1fr; // Single column for mobile
   grid-template-rows: repeat(5, auto);
+  @include m.respond(lg-phone) {
+    // 600px+
+    grid-template-columns: [start] 1fr [middle] 2fr [end];
+    grid-template-rows: [header-start] auto [content-start] auto [content-middle] auto [content-end];
+  }
 }
