@@ -1,0 +1,28 @@
+@use "../abstracts/variables" as v;
+
+.pagination {
+  display: flex;
+  gap: v.$pagination-gap;
+  align-items: center;
+  justify-content: center;
+  &__button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+  &__icon {
+    font-size: v.$font-size-lg;
+    color: v.$color-accent-tertiary;
+    transition: all 0.2s;
+    &:hover {
+      color: v.$color-btn-hover;
+    }
+  }
+  &__number {
+    color: v.$color-text-primary;
+    font-size: v.$default-font-size;
+  }
+}

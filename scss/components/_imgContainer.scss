@@ -3,7 +3,8 @@
 .img-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(4, auto);
+  // grid-template-rows: repeat(4, auto);
+  grid-auto-rows: auto;
   gap: v.$default-gap;
   &__img {
     width: 100%;

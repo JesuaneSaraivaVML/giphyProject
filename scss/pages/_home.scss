@@ -47,6 +47,17 @@
     line-height: 1.6rem;
     text-align: left;
   }
+
+  &__pagination {
+  }
+  &__pagination-button {
+    &--right {
+    }
+    &--left {
+    }
+  }
+  &__pagination-number {
+  }
 }
 
 .section-trending {
