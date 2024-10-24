@@ -2,8 +2,11 @@
 
 import { URL_SEARCH, URL_RANDOM } from "./utils/constants.js";
 
+// DOM Elements
 const pictureElement = document.querySelector(".section-random__picture");
-const randomImageElement = document.querySelector(".section-random__image");
+const nextRandomButton = document.querySelector(".section-random__next-btn");
+const searchForm = document.querySelector(".section-finder__form");
+const finderImageContainer = document.querySelector(".img-container--finder");
 
 function timeout(seconds) {
   return new Promise((_, reject) => {
@@ -51,36 +54,84 @@ async function randomGIF(rating = "g") {
   }
 }
 
-try {
-  //   const dogResults = await search("dogs");
-  // console.log(dogResults);
-  //   const randomResult = await randomGIF();
-  //   console.log(randomResult);
-} catch (e) {
-  console.log(e);
-}
+// TODO, to race with timeout, and then implement timer to send if it exceeds timeout
+async function handleLoadRandomGIF() {
+  try {
+    const randomResult = await randomGIF();
 
-function updateRandomImage(src) {}
+    // Get the media's URL from the Giphy API response for the original and mobile sizes
+    const mediaUrlOriginal = randomResult.images.original.url;
+    const mediaUrlSmall = randomResult.images.downsized.url;
+    const mediaUrlMedium = randomResult.images.downsized_medium.url;
 
-// TODO, to race with timeout, and then implement timer to send if it esceeds timeout
-async function loadRandomGIF() {
-  const randomResult = await randomGIF();
-  console.log(randomResult);
+    // Get media's type
+    const mediaType = randomResult.type;
 
-  // Get the media's URL from the Giphy API response for the original and mobile sizes
-  const mediaUrlOriginal = randomResult.images.original.url;
-  const mediaUrlSmall = randomResult.images.downsized.url;
-  const mediaUrlMedium = randomResult.images.downsized_medium.url;
-
-  // Get media's type
-  const mediaType = randomResult.type;
-
-  // Update the <picture> element with the appropriate sources
-  pictureElement.innerHTML = `
+    // Update the <picture> element with the appropriate sources
+    pictureElement.innerHTML = `
     <source srcset="${mediaUrlMedium}" media="(min-width: 768px)">
     <source srcset="${mediaUrlSmall}" media="(max-width: 599px)">
     <img class="section-random__image" src="${mediaUrlOriginal}" type="${mediaType}" alt="Random GIF">
   `;
+  } catch (e) {
+    // TODO improve this
+    pictureElement.innerHTML = `
+    Error fetching random GIF
+  `;
+  }
 }
 
-window.addEventListener("load", loadRandomGIF);
+// TODO, to race with timeout, and then implement timer to send if it exceeds timeout
+async function handleSearch(e) {
+  e.preventDefault();
+
+  const form = e.currentTarget;
+  const formData = new FormData(form);
+  const query = formData.get("section-finder__input");
+
+  try {
+    const result = await search(query);
+    const data = result.data;
+
+    // Reset image container
+    finderImageContainer.innerHTML = "";
+
+    data.forEach((img) => {
+      const mediaUrlOriginal = img.images?.original?.url;
+      const mediaUrlSmall = img.images?.downsized?.url;
+      const mediaUrlMedium = img.images?.downsized_medium?.url;
+      const mediaType = img.type;
+      const alt = img.title;
+      console.log(img);
+      finderImageContainer.insertAdjacentHTML(
+        "beforeend",
+        `            
+        <picture class="section-finder__picture">
+          <source srcset="${mediaUrlMedium}" media="(min-width: 768px)">
+          <source srcset="${mediaUrlSmall}" media="(max-width: 599px)">
+          <img class="img-container__img" src="${mediaUrlOriginal}" type="${mediaType}" alt="${alt}">
+        </picture>`
+      );
+    });
+  } catch (e) {
+    // TODO
+    console.log(e);
+  }
+}
+
+function addEventListeners() {
+  // To the random section next button
+  nextRandomButton.addEventListener("click", handleLoadRandomGIF);
+
+  // To the search form
+  searchForm.addEventListener("submit", handleSearch);
+}
+
+function init() {
+  addEventListeners();
+}
+
+// Initialize app and Setup necessary event listeners
+init();
+
+// window.addEventListener("load", handleLoadRandomGIF);

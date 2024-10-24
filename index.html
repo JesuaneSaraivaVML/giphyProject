@@ -47,12 +47,12 @@
         <picture class="section-random__picture">
           <source srcset="assets/300px.jpg" media="(max-width: 599px)" />
           <img
-            class="section-random__image"
+            class="section-random__image img-container__img"
             src="assets/400px.jpg"
             alt="Random GIF"
           />
         </picture>
-        <button class="btn">
+        <button class="section-random__next-btn btn">
           <i class="btn__icon fa-solid fa-arrows-rotate"></i>
           <span class="btn__text">Next</span>
         </button>
@@ -71,9 +71,10 @@
               id="section-finder__input"
               type="text"
               class="section-finder__input"
+              name="section-finder__input"
             />
           </div>
-          <button class="btn">
+          <button class="btn" type="submit">
             <i class="btn__icon fa-solid fa-search"></i
             ><span class="btn__text">Search</span>
           </button>
