@@ -11,3 +11,6 @@ npm-debug.log*
 
 # Sass
 .sass-cache/
+
+# API key
+js/utils/config.js
