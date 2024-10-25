@@ -2,6 +2,7 @@ import { fetchFromAPI } from "../api/giphy.js";
 import { URL_TRENDING, ITEMS_PER_PAGE, RATING } from "../utils/constants.js";
 import { elements } from "../utils/dom.js";
 import { updatePaginationControls } from "../components/pagination.js";
+import { loadImages } from "../utils/helpers.js";
 
 export async function handleTrendingGIFs(offset = 0) {
   try {
@@ -31,10 +32,16 @@ export async function handleTrendingGIFs(offset = 0) {
       );
     });
 
+    // Wait for all images to load
+    await loadImages(elements.pictureElementRandom);
+
     // Update pagination controls
     updatePaginationControls(pagination, "trending");
   } catch (e) {
-    // TODO
-    console.log(e);
+    console.error(`Error in trending GIFs handler: ${e}`);
+    elements.trendingImageContainer.innerHTML = `
+    Error fetching trending GIFs: ${e}
+  `;
+    throw e;
   }
 }

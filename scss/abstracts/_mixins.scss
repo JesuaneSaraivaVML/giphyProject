@@ -3,6 +3,13 @@
   top: $top;
 }
 
+@mixin absCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 // MEDIA QUERY MANAGER
 /*
 0 - 600px:      Phone -> is where our normal styles apply

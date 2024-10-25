@@ -1,32 +1,52 @@
 "use strict";
-
-import { handleLoadRandomGIF } from "../js/handlers/random.js";
 import { handleSearch } from "../js/handlers/search.js";
 import { handleTrendingGIFs } from "./handlers/trending.js";
 import { elements } from "./utils/dom.js";
 import { initNavigation } from "./components/navigation.js";
-
-function timeout(seconds) {
-  return new Promise((_, reject) => {
-    setTimeout(() => {
-      reject("Timeout exceeded");
-    }, seconds * 1000);
-  });
-}
+import { handleLoadingState } from "./utils/helpers.js";
+import { handleLoadRandomGIF } from "./handlers/random.js";
 
 // Function to add even listeners
 function addEventListeners() {
-  elements.nextRandomButton.addEventListener("click", handleLoadRandomGIF);
-  elements.searchForm.addEventListener("submit", handleSearch);
+  elements.nextRandomButton.addEventListener("click", () =>
+    handleLoadingState(
+      elements.randomSpinner,
+      elements.nextRandomButton,
+      handleLoadRandomGIF
+    )
+  );
+
+  elements.searchForm.addEventListener("submit", (e) =>
+    handleLoadingState(
+      elements.finderSpinner,
+      elements.finderPaginationContainer,
+      () => handleSearch(e)
+    )
+  );
 }
 
+// Function to setup necessary event listeners and the mobile nav
 function init() {
   addEventListeners();
   initNavigation();
 }
 
-// Initialize app and setup necessary event listeners
 init();
 
-window.addEventListener("load", handleLoadRandomGIF);
-window.addEventListener("load", handleTrendingGIFs);
+// initial page load of Random GIF
+window.addEventListener("load", () =>
+  handleLoadingState(
+    elements.randomSpinner,
+    elements.nextRandomButton,
+    handleLoadRandomGIF
+  )
+);
+
+// Initial page load of Trending GIFs
+window.addEventListener("load", () =>
+  handleLoadingState(
+    elements.trendingSpinner,
+    elements.trendingPaginationContainer,
+    handleTrendingGIFs
+  )
+);

@@ -13,6 +13,10 @@
     grid-row: 2 / 3;
     min-height: v.$section-height-no-nav;
   }
+  &__container {
+    position: relative;
+  }
+
   &__image {
     width: 100%;
     height: 100%;
@@ -72,6 +76,10 @@
     line-height: 1.6rem;
     text-align: left;
   }
+
+  &__container {
+    position: relative;
+  }
 }
 
 .section-trending {
@@ -91,5 +99,8 @@
   @include m.respond(tab-port) {
     grid-column: 3/4;
     grid-row: 2/3;
+  }
+  &__container {
+    position: relative;
   }
 }

@@ -12,54 +12,84 @@
   </head>
   <body>
     <div class="container">
+      <!-- Header -->
       <header class="header u-center-text">
         <h1 class="heading-primary">Giphy Project</h1>
       </header>
-      <nav class="mobile-nav">
+
+      <!-- Mobile Nav -->
+      <nav class="mobile-nav" aria-label="Main Navigation">
         <a
           href="#section-random"
           class="mobile-nav__item mobile-nav__item--active"
-          aria-label="Random"
+          aria-label="Random GIF"
           aria-current="page"
           role="button"
         >
-          <i class="mobile-nav__icon fa-regular fa-image"></i>
+          <i
+            class="mobile-nav__icon fa-regular fa-image"
+            aria-hidden="true"
+          ></i>
         </a>
         <a
           href="#section-finder"
           class="mobile-nav__item"
           aria-label="Finder"
           role="button"
+          aria-label="Search GIFs"
         >
-          <i class="mobile-nav__icon fas fa-search"></i>
+          <i class="mobile-nav__icon fas fa-search" aria-hidden="true"></i>
         </a>
         <a
           href="#section-trending"
           class="mobile-nav__item"
           aria-label="Trending"
           role="button"
+          aria-label="Trending GIFs"
         >
-          <i class="mobile-nav__icon fa-regular fa-thumbs-up"></i>
+          <i
+            class="mobile-nav__icon fa-regular fa-thumbs-up"
+            aria-hidden="true"
+          ></i>
         </a>
       </nav>
-      <section id="section-random" class="section-random">
-        <h2 class="heading-secondary">Random</h2>
-        <picture class="section-random__picture">
-          <source srcset="assets/300px.jpg" media="(max-width: 599px)" />
-          <img
-            class="section-random__image img-container__img"
-            src="assets/400px.jpg"
-            alt="Random GIF"
-          />
-        </picture>
-        <button class="section-random__next-btn btn">
-          <i class="btn__icon fa-solid fa-arrows-rotate"></i>
+
+      <!-- Random Section -->
+      <section
+        id="section-random"
+        class="section-random"
+        aria-labelledby="random-title"
+      >
+        <h2 id="random-title" class="heading-secondary">Random</h2>
+        <div class="section-random__container" aria-live="polite">
+          <div
+            class="loading-spinner loading-spinner--random"
+            role="status"
+            aria-label="Loading random GIF"
+          ></div>
+          <picture class="section-random__picture"> </picture>
+        </div>
+        <button
+          class="section-random__next-btn btn"
+          aria-label="Load next random GIF"
+        >
+          <i class="btn__icon fa-solid fa-arrows-rotate" aria-hidden="true"></i>
           <span class="btn__text">Next</span>
         </button>
       </section>
-      <section id="section-finder" class="section-finder">
-        <h2 class="heading-secondary">Finder</h2>
-        <form class="section-finder__form">
+
+      <!-- Finder Section -->
+      <section
+        id="section-finder"
+        class="section-finder"
+        aria-labelledby="finder-title"
+      >
+        <h2 id="finder-title" class="heading-secondary">Finder</h2>
+        <form
+          class="section-finder__form"
+          role="search"
+          aria-label="Search for GIFs"
+        >
           <div class="section-finder__input-container">
             <label
               for="section-finder__input"
@@ -72,20 +102,47 @@
               type="text"
               class="section-finder__input"
               name="section-finder__input"
+              placeholder="Enter search text"
             />
           </div>
-          <button class="btn" type="submit">
+          <button class="btn" type="submit" aria-label="Search">
             <i class="btn__icon fa-solid fa-search"></i
             ><span class="btn__text">Search</span>
           </button>
         </form>
-        <div class="img-container img-container--finder"></div>
-        <div class="pagination section-finder__pagination"></div>
+        <div class="section-finder__container" aria-live="polite">
+          <div
+            class="loading-spinner loading-spinner--finder u-hidden"
+            role="status"
+            aria-label="Loading search result"
+          ></div>
+          <div class="img-container img-container--finder"></div>
+        </div>
+        <div
+          class="pagination section-finder__pagination"
+          aria-label="Search results pagination"
+        ></div>
       </section>
-      <section id="section-trending" class="section-trending">
-        <h2 class="heading-secondary">Trending</h2>
-        <div class="img-container img-container--trending"></div>
-        <div class="pagination section-trending__pagination"></div>
+
+      <!-- Trending Section -->
+      <section
+        id="section-trending"
+        class="section-trending"
+        aria-labelledby="trending-title"
+      >
+        <h2 id="trending-title" class="heading-secondary">Trending</h2>
+        <div class="section-trending__container" aria-live="polite">
+          <div
+            class="loading-spinner loading-spinner--trending"
+            role="status"
+            aria-label="Loading trending GIFs"
+          ></div>
+          <div class="img-container img-container--trending"></div>
+        </div>
+        <div
+          class="pagination section-trending__pagination"
+          aria-label="Trending GIFs pagination"
+        ></div>
       </section>
     </div>
     <script type="module" src="js/app.js"></script>

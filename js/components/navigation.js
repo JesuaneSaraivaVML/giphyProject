@@ -1,20 +1,5 @@
 import { elements } from "../utils/dom.js";
-
-function getOffset() {
-  const headerHeight = document.querySelector("header").offsetHeight;
-  const navHeight = document.querySelector(".mobile-nav").offsetHeight;
-  return headerHeight + navHeight;
-}
-
-function scrollToSection(section, offset) {
-  const targetPosition = section.getBoundingClientRect().top;
-  const offsetPosition = targetPosition + window.scrollY - offset;
-
-  window.scrollTo({
-    top: offsetPosition,
-    behavior: "smooth",
-  });
-}
+import { getOffset, scrollToSection } from "../utils/helpers.js";
 
 function updateActiveNavItem(navItems, activeItem) {
   navItems.forEach((item) => {

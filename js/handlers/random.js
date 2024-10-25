@@ -22,10 +22,23 @@ export async function handleLoadRandomGIF() {
     <source srcset="${mediaUrlSmall}" media="(max-width: 599px)">
     <img class="section-random__image" src="${mediaUrlOriginal}" type="${mediaType}" alt="Random GIF">
   `;
+
+    // Wait for the actual image to load
+    await new Promise((resolve, reject) => {
+      const img = elements.pictureElementRandom.querySelector("img");
+      if (img.complete) {
+        // If the image is already loaded (complete), resolve immediately
+        resolve();
+      } else {
+        img.onload = resolve;
+        img.onerror = () => reject(new Error("Failed to load random GIF"));
+      }
+    });
   } catch (e) {
-    console.error(e);
+    console.error(`Error in random GIF handler: ${e}`);
     elements.pictureElementRandom.innerHTML = `
     Error fetching random GIF: ${e}
   `;
+    throw e;
   }
 }

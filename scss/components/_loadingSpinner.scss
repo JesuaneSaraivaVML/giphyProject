@@ -1,0 +1,23 @@
+@use "../abstracts/variables" as v;
+@use "../abstracts/mixins" as m;
+
+.loading-spinner {
+  border: 0.5rem solid rgba($color: v.$color-accent-secondary, $alpha: 0.3);
+  border-top: 0.5rem solid v.$color-btn-disabled;
+  border-radius: 50%;
+  width: 5rem;
+  height: 5rem;
+  animation: spin 2s linear infinite;
+  margin: 1.4rem;
+  @include m.absCenter;
+  z-index: 10;
+}
+
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

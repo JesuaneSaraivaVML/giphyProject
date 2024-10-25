@@ -27,7 +27,7 @@ export function updatePaginationControls(pagination, section) {
           <button
             class="pagination__button" ${currentPage === 1 ? "disabled" : ""} 
           data-action="prev">
-            <i class="pagination__icon fa-solid fa-caret-left"></i>
+            <i class="pagination__icon fa-solid fa-caret-left arira-hidden="true"></i>
           </button>
           <span class="pagination__number section-${section}__pagination-number"
             >${currentPage} of ${totalPages}</span

@@ -12,4 +12,7 @@ export const elements = {
   ),
   navItems: document.querySelectorAll(".mobile-nav__item"),
   sections: document.querySelectorAll('section[id^="section-"]'),
+  randomSpinner: document.querySelector(".loading-spinner--random"),
+  finderSpinner: document.querySelector(".loading-spinner--finder"),
+  trendingSpinner: document.querySelector(".loading-spinner--trending"),
 };
