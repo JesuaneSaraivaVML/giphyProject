@@ -8,4 +8,5 @@
   grid-column: 1/-1;
   grid-row: 1/2;
   @include m.sticky-element(0);
+  z-index: 200;
 }

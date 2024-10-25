@@ -3,30 +3,40 @@ import { elements } from "../utils/dom.js";
 import { handleSearch } from "../handlers/search.js";
 import { handleTrendingGIFs } from "../handlers/trending.js";
 
+// Track current offsets for pagination
 let currentOffsetFinder = 0,
   currentOffsetTrending = 0;
 
-// Function to update pagination controls
+/**
+ * Updates pagination controls for a given section
+ * @param {Object} pagination - Pagination data from API response
+ * @param {string} section - The section to update ('finder' or 'trending')
+ */
 export function updatePaginationControls(pagination, section) {
+  // Calculate total items and pages, constrained by API limit
   const total = Math.min(pagination.total_count, MAX_API_LIMIT);
+  const totalPages = Math.ceil(total / ITEMS_PER_PAGE);
+
+  // Determine current offset and page
   const offsets = {
     finder: currentOffsetFinder,
     trending: currentOffsetTrending,
   };
+  const currentOffset = offsets[section];
+  const currentPage = Math.floor(currentOffset / ITEMS_PER_PAGE) + 1;
+
+  // Select the appropriate container for pagination controls
   const containers = {
     finder: elements.finderPaginationContainer,
     trending: elements.trendingPaginationContainer,
   };
+  const paginationContainer = containers[section];
 
-  const currentOffset = offsets[section];
-  const totalPages = Math.ceil(total / ITEMS_PER_PAGE);
-  const currentPage = Math.floor(currentOffset / ITEMS_PER_PAGE) + 1;
-
-  // Create/Update pagination btns
+  // Create pagination btns HTML
   const paginationHTML = `
           <button
             class="pagination__button" ${currentPage === 1 ? "disabled" : ""} 
-          data-action="prev">
+          data-action="prev" aria-label="Previous Page">
             <i class="pagination__icon fa-solid fa-caret-left arira-hidden="true"></i>
           </button>
           <span class="pagination__number section-${section}__pagination-number"
@@ -34,12 +44,16 @@ export function updatePaginationControls(pagination, section) {
           >
           <button
             class="pagination__button"
-          ${currentPage === totalPages ? "disabled" : ""} data-action="next">
-            <i class="pagination__icon fa-solid fa-caret-right"></i>
+          ${
+            currentPage === totalPages ? "disabled" : ""
+          } data-action="next" aria-label="Next Page">
+            <i class="pagination__icon fa-solid fa-caret-right" arira-hidden="true"></i>
           </button>
     `;
-  const paginationContainer = containers[section];
+  // Update pagination container with new buttons
   paginationContainer.innerHTML = paginationHTML;
+
+  // Add event listeners to pagination buttons
   const paginationButtons = paginationContainer.querySelectorAll(
     ".pagination__button"
   );
@@ -47,7 +61,7 @@ export function updatePaginationControls(pagination, section) {
     btn.addEventListener("click", () => {
       const action = btn.dataset.action;
 
-      // Update offset based on action
+      // Update offset based on btn action
       if (action === "prev" && offsets[section] >= ITEMS_PER_PAGE) {
         offsets[section] -= ITEMS_PER_PAGE;
       } else if (

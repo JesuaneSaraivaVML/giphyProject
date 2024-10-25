@@ -4,8 +4,22 @@ import { elements } from "../utils/dom.js";
 import { updatePaginationControls } from "../components/pagination.js";
 import { loadImages } from "../utils/helpers.js";
 
+/**
+ * Fetches and displays trending GIFs
+ * @param {number} offset - Pagination offset, defaults to 0
+ * @returns {Promise<void>}
+ *
+ * @todo Use min-width and max-width from a constant variable, not hard-coded
+ * @todo Implement Promise.race between fetch call and timeout helper function
+ * @todo Add automatic retry mechanism with timer if initial request fails
+ *       (to handle poor network conditions)
+ * @todo Add ".error-message" class in css
+ *
+ * @throws {Error} Propagates errors
+ */
 export async function handleTrendingGIFs(offset = 0) {
   try {
+    // Fetch trending GIFs with pagination parameters
     const { data, pagination } = await fetchFromAPI(
       `${URL_TRENDING}&rating=${RATING}&limit=${ITEMS_PER_PAGE}&offset=${offset}`
     );
@@ -13,14 +27,16 @@ export async function handleTrendingGIFs(offset = 0) {
     // Reset image container
     elements.trendingImageContainer.innerHTML = "";
 
-    // Insert images
+    // Process and render each GIF
     data.forEach((img) => {
+      // Extract media URLs and metadata
       const mediaUrlOriginal = img.images?.original?.url;
       const mediaUrlSmall = img.images?.downsized?.url;
       const mediaUrlMedium = img.images?.downsized_medium?.url;
       const mediaType = img.type;
       const alt = img.title;
 
+      // Create and insert picture element into container
       elements.trendingImageContainer.insertAdjacentHTML(
         "beforeend",
         `            
@@ -32,16 +48,19 @@ export async function handleTrendingGIFs(offset = 0) {
       );
     });
 
-    // Wait for all images to load
-    await loadImages(elements.pictureElementRandom);
+    // Ensure all images are actually loaed before continuing
+    await loadImages(elements.trendingImageContainer);
 
     // Update pagination controls
     updatePaginationControls(pagination, "trending");
   } catch (e) {
     console.error(`Error in trending GIFs handler: ${e}`);
     elements.trendingImageContainer.innerHTML = `
-    Error fetching trending GIFs: ${e}
-  `;
+      <div class="error-message" role="alert">
+        Error fetching trending GIFs: ${e}
+      </div>
+    `;
+    // Propagate error
     throw e;
   }
 }

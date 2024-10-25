@@ -2,7 +2,18 @@ import { URL_RANDOM, RATING } from "../utils/constants.js";
 import { elements } from "../utils/dom.js";
 import { fetchFromAPI } from "../api/giphy.js";
 
-// TODO, to race with timeout, and then implement timer to send if it exceeds timeout
+/**
+ * Fetches and displays a random GIF
+ * @returns {Promise<void>}
+ *
+ * @todo Use min-width and max-width from a constant variable, not hard-coded
+ * @todo Implement Promise.race between fetch call and timeout helper function
+ * @todo Add automatic retry mechanism with timer if initial request fails
+ *       (to handle poor network conditions)
+ * @todo Add ".error-message" class in css
+ *
+ * @throws {Error} Propagates errors
+ */
 export async function handleLoadRandomGIF() {
   try {
     const { data: randomResult } = await fetchFromAPI(
@@ -37,8 +48,10 @@ export async function handleLoadRandomGIF() {
   } catch (e) {
     console.error(`Error in random GIF handler: ${e}`);
     elements.pictureElementRandom.innerHTML = `
-    Error fetching random GIF: ${e}
-  `;
+      <div class="error-message" role="alert">
+        Error fetching random GIF: ${e}
+      </div>
+    `;
     throw e;
   }
 }

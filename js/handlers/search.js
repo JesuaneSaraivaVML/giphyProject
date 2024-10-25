@@ -2,6 +2,7 @@ import { fetchFromAPI } from "../api/giphy.js";
 import { URL_SEARCH, ITEMS_PER_PAGE, RATING } from "../utils/constants.js";
 import { elements } from "../utils/dom.js";
 import { updatePaginationControls } from "../components/pagination.js";
+import { loadImages } from "../utils/helpers.js";
 
 /**
  * Handles the search functionality for GIFs
@@ -9,19 +10,14 @@ import { updatePaginationControls } from "../components/pagination.js";
  * @param {number} offset - Pagination offset, defaults to 0
  * @returns {Promise<void>}
  *
- * @description
- * This function:
- * 1. Prevents form submission if event exists
- * 2. Fetches search query from form data
- * 3. Makes API call to GIPHY search endpoint
- * 4. Renders results in the finder container
- * 5. Updates pagination controls
- *
  * @todo Use min-width and max-width from a constant variable, not hard-coded
  * @todo Implement Promise.race between fetch call and timeout helper function
  * @todo Add automatic retry mechanism with timer if initial request fails
  *       (to handle poor network conditions)
  * @todo Add ".error-message" class in css
+ * @todo Fix loadImage bug
+ *
+ *  @throws {Error} Propagates errors
  */
 export async function handleSearch(e, offset = 0) {
   // Prevent form submission if event exists
@@ -42,7 +38,7 @@ export async function handleSearch(e, offset = 0) {
 
     // Process and render each GIF result
     data.forEach((img) => {
-      // Extract media URLs for different viewport sizes
+      // Extract media URLs (for different viewport sizes) and metadato
       const mediaUrlOriginal = img.images?.original?.url;
       const mediaUrlSmall = img.images?.downsized?.url;
       const mediaUrlMedium = img.images?.downsized_medium?.url;
@@ -56,10 +52,13 @@ export async function handleSearch(e, offset = 0) {
         <picture class="section-finder__picture">
           <source srcset="${mediaUrlMedium}" media="(min-width: 768px)">
           <source srcset="${mediaUrlSmall}" media="(max-width: 599px)">
-          <img class="img-container__img" src="${mediaUrlOriginal}" type="${mediaType}" alt="${alt}" loading="lazy">
+          <img class="img-container__img" src="${mediaUrlOriginal}" type="${mediaType}" alt="${alt}">
         </picture>`
       );
     });
+
+    // Ensure all images are loaed
+    //await loadImages(elements.finderImageContainer);
 
     // Update pagination
     updatePaginationControls(pagination, "finder");
@@ -68,7 +67,7 @@ export async function handleSearch(e, offset = 0) {
     console.error("Failed search: ", e);
     elements.finderImageContainer.innerHTML = `
       <div class="error-message" role="alert">
-        Error fetching GIFs from API: ${error.message}
+        Error fetching GIFs from API: ${e}
       </div>`;
     // Rethrow error
     throw e;
