@@ -5,9 +5,13 @@
   display: grid;
   grid-template-columns: 1fr; // Single column for mobile
   grid-template-rows: repeat(5, auto);
+
   @include m.respond(lg-phone) {
-    // 600px+
-    grid-template-columns: [start] 1fr [middle] 2fr [end];
-    grid-template-rows: [header-start] auto [content-start] auto [content-middle] auto [content-end];
+    grid-template-columns: 1fr 1.5fr;
+    grid-template-rows: repeat(3, auto);
+  }
+  @include m.respond(tab-port) {
+    grid-template-columns: 1fr 2.5fr 1fr;
+    grid-template-rows: repeat(2, auto);
   }
 }

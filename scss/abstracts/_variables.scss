@@ -11,13 +11,13 @@ $color-btn-hover: #9933ffb7;
 $color-btn-disabled: #4f4d51b7;
 
 // FONT
-$default-font-size: 1.5rem;
+$default-font-size: 1.4rem;
 $default-icon-size: 1.8rem;
-$heading-font-size-primary: 2.6rem;
-$heading-font-size-secondary: 2.5rem;
+$heading-font-size-primary: 2.4rem;
+$heading-font-size-secondary: 2.3rem;
 $font-size-sm: 1.25rem;
-$font-size-md: 1.7rem;
-$font-size-lg: 3.2rem;
+$font-size-md: 1.6rem;
+$font-size-lg: 3rem;
 
 // PADDINGS
 $section-padding-sm: 1rem 2.5rem;
@@ -28,6 +28,7 @@ $search-input-padding: 0.8rem;
 $header-height: 5.9875rem;
 $nav-height: 4.3rem;
 $section-height: calc(100vh - (#{$header-height} + #{$nav-height}));
+$section-height-no-nav: calc(100vh - #{$header-height});
 
 // GAPS & MARGINS
 $default-gap: 1rem;

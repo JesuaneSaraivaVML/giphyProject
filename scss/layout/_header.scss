@@ -5,9 +5,7 @@
   background-color: v.$color-bg-primary;
   padding: 1rem;
   height: v.$header-height;
+  grid-column: 1/-1;
+  grid-row: 1/2;
   @include m.sticky-element(0);
-  @include m.respond(lg-phone) {
-    grid-column: start / end;
-    grid-row: header-start / content-start;
-  }
 }
