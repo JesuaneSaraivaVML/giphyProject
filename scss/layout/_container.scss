@@ -3,7 +3,7 @@
 
 .container {
   display: grid;
-  grid-template-columns: 1fr; // Single column for mobile
+  grid-template-columns: 1fr;
   grid-template-rows: repeat(5, auto);
 
   @include m.respond(lg-phone) {

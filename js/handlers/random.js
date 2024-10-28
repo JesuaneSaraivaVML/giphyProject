@@ -49,7 +49,7 @@ export async function handleLoadRandomGIF() {
     console.error(`Error in random GIF handler: ${e}`);
     elements.pictureElementRandom.innerHTML = `
       <div class="error-message" role="alert">
-        Error fetching random GIF: ${e}
+        Error fetching random GIF
       </div>
     `;
     throw e;

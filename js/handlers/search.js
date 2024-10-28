@@ -67,7 +67,7 @@ export async function handleSearch(e, offset = 0) {
     console.error("Failed search: ", e);
     elements.finderImageContainer.innerHTML = `
       <div class="error-message" role="alert">
-        Error fetching GIFs from API: ${e}
+        Error fetching GIFs from API
       </div>`;
     // Rethrow error
     throw e;

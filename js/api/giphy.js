@@ -5,7 +5,7 @@
  * @throws {Error} If the request fails or returns status diff than 200
  *
  * @todo Implement request timeout using Promise.race
- * @todo Add retry mechanism for failed requests
+ * @todo Add retry mechanism for failed requests (timer?)
  * */
 export async function fetchFromAPI(url) {
   try {

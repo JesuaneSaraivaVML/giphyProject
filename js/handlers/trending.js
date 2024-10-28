@@ -57,7 +57,7 @@ export async function handleTrendingGIFs(offset = 0) {
     console.error(`Error in trending GIFs handler: ${e}`);
     elements.trendingImageContainer.innerHTML = `
       <div class="error-message" role="alert">
-        Error fetching trending GIFs: ${e}
+        Error fetching trending GIFs
       </div>
     `;
     // Propagate error

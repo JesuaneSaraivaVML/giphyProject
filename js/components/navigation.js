@@ -21,7 +21,6 @@ function updateActiveNavItem(navItems, activeItem) {
 
 /**
  * Initializes navigation functionality with intersection observer and click handlers
- * @todo forgot that this doesn't help screen reader --> must announce section change !!!
  */
 export function initNavigation() {
   // Calculate total offset for scroll positioning
