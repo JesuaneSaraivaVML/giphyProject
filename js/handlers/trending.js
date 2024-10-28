@@ -10,9 +10,6 @@ import { loadImages } from "../utils/helpers.js";
  * @returns {Promise<void>}
  *
  * @todo Use min-width and max-width from a constant variable, not hard-coded
- * @todo Implement Promise.race between fetch call and timeout helper function
- * @todo Add automatic retry mechanism with timer if initial request fails
- *       (to handle poor network conditions)
  * @todo Add ".error-message" class in css
  *
  * @throws {Error} Propagates errors

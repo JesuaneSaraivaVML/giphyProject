@@ -11,9 +11,6 @@ import { loadImages } from "../utils/helpers.js";
  * @returns {Promise<void>}
  *
  * @todo Use min-width and max-width from a constant variable, not hard-coded
- * @todo Implement Promise.race between fetch call and timeout helper function
- * @todo Add automatic retry mechanism with timer if initial request fails
- *       (to handle poor network conditions)
  * @todo Add ".error-message" class in css
  * @todo Fix loadImage bug
  *
@@ -25,7 +22,10 @@ export async function handleSearch(e, offset = 0) {
 
   // Get search query from form data
   const formData = new FormData(elements.searchForm);
-  const query = formData.get("section-finder__input");
+  const query = formData.get("section-finder__input").trim();
+
+  // Return if query is empty string
+  if (!query) return;
 
   try {
     // Fetch data from API with pagination parameters

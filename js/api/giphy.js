@@ -4,8 +4,9 @@
  * @returns {Promise<Object>} The API response data
  * @throws {Error} If the request fails or returns status diff than 200
  *
- * @todo Implement request timeout using Promise.race
- * @todo Add retry mechanism for failed requests (timer?)
+ * @todo Implement Promise.race between fetch call and timeout helper function
+ * @todo Add automatic retry mechanism with timer if initial request fails (to handle poor network conditions)
+ *
  * */
 export async function fetchFromAPI(url) {
   try {

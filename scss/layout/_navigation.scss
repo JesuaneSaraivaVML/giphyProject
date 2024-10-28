@@ -5,6 +5,7 @@
   background-color: v.$color-bg-tertiary;
   height: v.$nav-height;
   @include m.sticky-element(v.$header-height);
+  z-index: 200;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
